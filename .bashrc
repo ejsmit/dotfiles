@@ -23,11 +23,8 @@ done;
 
 
 # completion
-
-
 case $OSTYPE in
   darwin*)
-
 		# Add tab completion for many Bash commands
 		if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
 			source "$(brew --prefix)/share/bash-completion/bash_completion";
@@ -48,11 +45,9 @@ complete -o bashdefault -o default -o nospace -F _git g;
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o default -o nospace -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
-# pip completion.   also enable completion for pip2 and pip3.
-# this is SOOOOO SLOW
-#eval "$(pip completion --bash)"
-#complete -o default -F _pip_completion pip2 pip3;
-
 
 # make sure gocryptfs private directory exists
-[[ -d ~/.private ]] || mkdir ~/.private
+[[ ! -d ~/.private ]] && mkdir ~/.private
+
+# Initialise osxfuse after reboot if device files does not exist
+[[ $OSTYPE == darwin* ]] && [[ ! -e /dev/osxfuse0 ]] && /Library/Filesystems/osxfuse.fs/Contents/Resources/load_osxfuse

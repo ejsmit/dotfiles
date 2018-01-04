@@ -7,11 +7,11 @@ git pull origin master;
 function doIt() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
-		--exclude ".osx" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE" \
 		-avh --no-perms . ~;
+	cp -f ~/nextcloud/dotfiles/dot.extra ~/.extra
 	source ~/.bash_profile;
 }
 
