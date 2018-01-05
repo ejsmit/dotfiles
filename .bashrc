@@ -1,5 +1,7 @@
 
 
+
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -9,7 +11,6 @@ done;
 unset file;
 
 
-
 # bash options
 
 # Case-insensitive globbing (used in pathname expansion)
@@ -17,9 +18,17 @@ unset file;
 # Autocorrect typos in path names when using `cd`
 # `**/qux` will enter `./foo/bar/baz/qux`
 # Recursive globbing, e.g. `echo **/*.txt`
-for option in nocaseglob histappend cdspell autocd globstar; do
+for option in nocaseglob histappend cdspell autocd globstar checkwinsize; do
 	shopt -s "$option" 2> /dev/null;
 done;
+
+# Increase Bash history size.
+HISTSIZE=10000
+HISTFILESIZE=10000;
+# don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+
+
 
 
 # completion
@@ -35,7 +44,11 @@ case $OSTYPE in
 		;;
 	*)
 		# usually already loaded
-
+		if [ -f /usr/share/bash-completion/bash_completion ]; then
+	   . /usr/share/bash-completion/bash_completion
+	  elif [ -f /etc/bash_completion ]; then
+	    . /etc/bash_completion
+	  fi
 		;;
 esac
 
