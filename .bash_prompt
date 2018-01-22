@@ -76,13 +76,13 @@ prompt_python() {
 	fi;
 
 }
-
+ 
 prompt_exitstatus() {
   exitstatus="$?"
   if [[ $exitstatus == 0 ]]; then
-	echo -e "${green}✔"
+  	echo -e "${green}✔"
   else
-	echo -e "${red}✘-$exitstatus"
+  	echo -e "${red}✘-$exitstatus"
   fi;
 }
 
@@ -134,11 +134,10 @@ else
 fi;
 
 
-#   "\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 # Set the terminal title and prompt.
 PS1="\[\033]0;${windowTitle}\007\]"; # working directory base name
-
 PS1+="\[${bold}\]\n"; # newline
+PS1+="\$(prompt_exitstatus) "
 PS1+="\[${userStyle}\]\u"; # username
 PS1+="\[${white}\] at ";
 PS1+="\[${hostStyle}\]\h"; # host
