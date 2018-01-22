@@ -59,9 +59,9 @@ complete -o bashdefault -o default -o nospace -F _git g;
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o default -o nospace -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
-
-# make sure gocryptfs private directory exists
-[[ ! -d ~/.private ]] && mkdir ~/.private
-
 # Initialise osxfuse after reboot if device files does not exist
 [[ $OSTYPE == darwin* ]] && [[ ! -e /dev/osxfuse0 ]] && /Library/Filesystems/osxfuse.fs/Contents/Resources/load_osxfuse
+
+# make sure gocryptfs private directory exists
+[[ -d ~/.private ]] || mkdir ~/.private
+

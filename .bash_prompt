@@ -77,10 +77,7 @@ prompt_python() {
 
 }
 
-
-
 prompt_exitstatus() {
-
   exitstatus="$?"
   if [[ $exitstatus == 0 ]]; then
 	echo -e "${green}✔"
