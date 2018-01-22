@@ -78,6 +78,18 @@ prompt_python() {
 }
 
 
+
+prompt_exitstatus() {
+
+  exitstatus="$?"
+  if [[ $exitstatus == 0 ]]; then
+	echo -e "${green}✔"
+  else
+	echo -e "${red}✘-$exitstatus"
+  fi;
+}
+
+
 if tput setaf 1 &> /dev/null; then
 	tput sgr0; # reset colors
 	bold=$(tput bold);
