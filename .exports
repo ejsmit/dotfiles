@@ -39,5 +39,6 @@ case $OSTYPE in
 	;;
   *)
 	export JAVA_HOME=/usr/lib/jvm/java-8-oracle;
+	[[ $XDG_CURRENT_DESKTOP == "KDE" ]] && export SSH_ASKPASS=ksshaskpass
     ;;
 esac
