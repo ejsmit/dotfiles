@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
+# loaded first before any other settings or paths are set.
+
 # Make vim the default editor.
 export EDITOR='nano';
-
 
 # dont mess with my prompt.  I will handle it.
 # see .condarc for conda.
@@ -29,3 +30,13 @@ export GPG_TTY=$(tty);
 
 # Golang working path
 export GOPATH=~
+
+
+
+case $OSTYPE in
+  darwin*)
+	export JAVA_HOME=$(/usr/libexec/java_home)
+  *)
+	export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+    ;;
+esac
