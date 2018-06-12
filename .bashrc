@@ -31,17 +31,15 @@ HISTCONTROL=ignoreboth
 
 
 
-
 # completion
 case $OSTYPE in
   darwin*)
 		# Add tab completion for many Bash commands
-		if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-			source "$(brew --prefix)/share/bash-completion/bash_completion";
+		if which brew &> /dev/null && [ -f "/usr/local/share/bash-completion/bash_completion" ]; then
+			source "/usr/local/share/bash-completion/bash_completion";
 		elif [ -f /etc/bash_completion ]; then
 			source /etc/bash_completion;
 		fi;
-
 		;;
 	*)
 		# usually already loaded
@@ -65,3 +63,14 @@ complete -o bashdefault -o default -o nospace -F _git g;
 # make sure gocryptfs private directory exists
 [[ -d ~/.private ]] || mkdir ~/.private
 
+
+# Assume ssh-agent is already running.   use other system means to start it.
+case $OSTYPE in
+  darwin*)
+    # manualy ssh-add -K key to add in mac keychain
+    ssh-add -A  2> /dev/null
+	;;
+  *)
+    for file in `grep -lR "PRIVATE" ~/.ssh/`; do ssh-add "$file" </dev/null >/dev/null ; done
+	;;
+esac
