@@ -35,8 +35,9 @@ export GOPATH=~
 
 case $OSTYPE in
   darwin*)
-	export JAVA_HOME=$(/usr/libexec/java_home)
+	export JAVA_HOME=$(/usr/libexec/java_home);
+	;;
   *)
-	export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+	export JAVA_HOME=/usr/lib/jvm/java-8-oracle;
     ;;
 esac
