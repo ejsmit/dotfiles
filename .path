@@ -3,15 +3,15 @@
 # assume exports have been loaded and nothing else
 
 
+# if anaconda3 is installed then use it
+# apparently this should not be done any more
+# [[ -d ~/anaconda3 ]] && export PATH="$HOME/anaconda3/bin:$PATH";
+
+
+
 # add both local bin alternatives
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH";
 
-# if anaconda3 is installed then use it
-[[ -d ~/anaconda3 ]] && export PATH="$HOME/anaconda3/bin:$PATH";
-
-
-# java
-# use the linux alternatives system to point to the correct binaries for now
 
 
 # some OS specific paths
