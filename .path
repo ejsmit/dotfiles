@@ -3,26 +3,18 @@
 # assume exports have been loaded and nothing else
 
 
-# if anaconda3 is installed then use it
-# apparently this should not be done any more
-# just use coda activate env
-# [[ -d ~/anaconda3 ]] && export PATH="$HOME/anaconda3/bin:$PATH";
 
 
-# add both local bin alternatives
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH";
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 
 # Rust path
 [[ -d ~/.cargo/bin ]] && export PATH="$PATH:$HOME/.cargo/bin"
-
-
-# some OS specific paths
-case $OSTYPE in
-  darwin*)
-    PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-    ;;
-  *)
-
-    ;;
-esac

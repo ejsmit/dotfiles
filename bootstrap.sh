@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 cd "$(dirname "${BASH_SOURCE}")";
-
 git pull origin master;
+
 
 function doIt() {
 	rsync --exclude ".git/" \
@@ -12,7 +12,18 @@ function doIt() {
 		--exclude "LICENSE" \
 		-avh --no-perms . ~;
 	cp -f ~/nextcloud/dotfiles/dot.extra ~/.extra
-	source ~/.bash_profile;
+
+
+	if [[ -f $HOME/.bash_profile ]]; then
+		[[ -f $HOME/.bash_profile.old ]] && rm $HOME/.bash_profile.old
+		mv $HOME/.bash_profile $HOME/.bash_profile.old
+		echo "-------------------------------------------------------"
+		echo ".bash_profile exists.  Renaming it to .bash_profile.old"
+		echo "-------------------------------------------------------"
+	fi
+
+	source ~/.profile;
+
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

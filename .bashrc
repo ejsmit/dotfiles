@@ -6,7 +6,7 @@
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{exports,path,bash_prompt,aliases,functions,extra}; do
+for file in ~/.{exports,path,aliases,functions,bash_prompt,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -31,31 +31,27 @@ HISTCONTROL=ignoreboth
 
 
 
-# completion
-case $OSTYPE in
-  darwin*)
-		# Add tab completion for many Bash commands
-		if which brew &> /dev/null && [ -f "/usr/local/share/bash-completion/bash_completion" ]; then
-			source "/usr/local/share/bash-completion/bash_completion";
-		elif [ -f /etc/bash_completion ]; then
-			source /etc/bash_completion;
-		fi;
-		;;
-	*)
-		# usually already loaded
-		if [ -f /usr/share/bash-completion/bash_completion ]; then
-	   . /usr/share/bash-completion/bash_completion
-	  elif [ -f /etc/bash_completion ]; then
-	    . /etc/bash_completion
-	  fi
-		;;
-esac
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
 
 # Enable tab completion for `g` by marking it as an alias for `git`
 complete -o bashdefault -o default -o nospace -F _git g;
 
+
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o default -o nospace -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
 
 # Initialise osxfuse after reboot if device files does not exist
 [[ $OSTYPE == darwin* ]] && [[ ! -e /dev/osxfuse0 ]] && /Library/Filesystems/osxfuse.fs/Contents/Resources/load_osxfuse
@@ -78,3 +74,6 @@ esac
 # apparently is is now the correct way to configure anaconda
 # system python still default until you 'conda activate'
 [[ -d ~/anaconda3 ]] && . ~/anaconda3/etc/profile.d/conda.sh;
+
+# Enable a nicer reverse search experience.
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

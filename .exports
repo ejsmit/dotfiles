@@ -1,6 +1,37 @@
 #!/usr/bin/env bash
 
-# loaded first before any other settings or paths are set.
+
+if tput setaf 1 &> /dev/null; then
+	tput sgr0; # reset colors
+	bold=$(tput bold);
+	reset=$(tput sgr0);
+	# Solarized colors, taken from http://git.io/solarized-colors.
+	black=$(tput setaf 0);
+	blue=$(tput setaf 33);
+	cyan=$(tput setaf 37);
+	green=$(tput setaf 64);
+	orange=$(tput setaf 166);
+	purple=$(tput setaf 125);
+	red=$(tput setaf 124);
+	violet=$(tput setaf 61);
+	white=$(tput setaf 15);
+	yellow=$(tput setaf 136);
+else
+	bold='';
+	reset="\e[0m";
+	black="\e[1;30m";
+	blue="\e[1;34m";
+	cyan="\e[1;36m";
+	green="\e[1;32m";
+	orange="\e[1;33m";
+	purple="\e[1;35m";
+	red="\e[1;31m";
+	violet="\e[1;35m";
+	white="\e[1;37m";
+	yellow="\e[1;33m";
+fi;
+
+
 
 # Make vim the default editor.
 export EDITOR='nano';
@@ -24,21 +55,11 @@ export LESS_TERMCAP_md="${yellow}";
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
-# Avoid issues with `gpg` as installed via Homebrew.
-# https://stackoverflow.com/a/42265848/96656
-export GPG_TTY=$(tty);
-
 # Golang working path
-export GOPATH=~
+export GOPATH=$HOME/go
 
+# password prompts for SSH
+[[ $XDG_CURRENT_DESKTOP == "KDE" ]] && export SSH_ASKPASS=ksshaskpass
 
-
-case $OSTYPE in
-  darwin*)
-	export JAVA_HOME=$(/usr/libexec/java_home);
-	;;
-  *)
-	export JAVA_HOME=/usr/lib/jvm/java-8-oracle;
-	[[ $XDG_CURRENT_DESKTOP == "KDE" ]] && export SSH_ASKPASS=ksshaskpass
-    ;;
-esac
+# Launch graphical apps.  useful for WSL
+[[ -z $DISPLAY ]] && export DISPLAY=:0
