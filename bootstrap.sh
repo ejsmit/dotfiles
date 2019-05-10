@@ -11,8 +11,10 @@ function doIt() {
 		--exclude "README.md" \
 		--exclude "LICENSE" \
 		-avh --no-perms . ~;
-	cp -f ~/nextcloud/dotfiles/dot.extra ~/.extra
-
+	
+	if [ -f ~/nextcloud/dotfiles/dot.extra ]; then
+		cp -f ~/nextcloud/dotfiles/dot.extra ~/.extra
+	fi
 
 	if [[ -f $HOME/.bash_profile ]]; then
 		[[ -f $HOME/.bash_profile.old ]] && rm $HOME/.bash_profile.old
@@ -23,6 +25,19 @@ function doIt() {
 	fi
 
 	source ~/.profile;
+
+	[ -f /usr/bin/xsel ] ||  echo "Warning: xsel not found (recommended for tmux)"
+
+	if [ -f /usr/bin/tmux ]; then
+		if [ ! -d ~/.tmux/plugins/tpm ]; then
+			echo "Installing tmux plugin manager (tpm)"
+			git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+		fi
+		tmux new-session -d "sleep 1"             
+		sleep 0.1
+		$HOME/.tmux/plugins/tpm/bin/clean_plugins
+		$HOME/.tmux/plugins/tpm/bin/update_plugins all
+	fi
 
 }
 
