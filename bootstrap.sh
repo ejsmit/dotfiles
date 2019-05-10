@@ -35,8 +35,8 @@ function doIt() {
 		fi
 		tmux new-session -d "sleep 1"             
 		sleep 0.1
+		$HOME/.tmux/plugins/tpm/bin/install_plugins all
 		$HOME/.tmux/plugins/tpm/bin/clean_plugins
-		$HOME/.tmux/plugins/tpm/bin/update_plugins all
 	fi
 
 }
