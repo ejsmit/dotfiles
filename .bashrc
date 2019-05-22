@@ -71,9 +71,10 @@ case $OSTYPE in
 	;;
 esac
 
-# apparently is is now the correct way to configure anaconda
+# this is not the correct way to configure miniconda.  it requires 'conda init'
+# but that does not work for version controlled dotfiles and different usernames.
 # system python still default until you 'conda activate'
-[[ -d ~/anaconda3 ]] && . ~/anaconda3/etc/profile.d/conda.sh;
+[[ -d ~/miniconda3/etc/profile.d/conda.sh ]] && . ~/miniconda3/etc/profile.d/conda.sh;
 
 # Enable a nicer reverse search experience.
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

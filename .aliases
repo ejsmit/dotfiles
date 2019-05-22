@@ -8,7 +8,6 @@ alias .....="cd ../../../.."
 
 # Shortcuts
 alias d="cd ~/Documents"
-alias n="cd ~/nextcloud"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
@@ -64,3 +63,4 @@ case $OSTYPE in
 	  alias nopriv="fusermount -u ~/.private"
     ;;
 esac
+
