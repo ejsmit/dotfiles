@@ -1,0 +1,70 @@
+# Set your name and email with the following:
+#   git config -f ~/.gitconfig.local user.name "John Appleseed"
+#   git config -f ~/.gitconfig.local user.email me@example.com
+
+
+[include]
+path = .gitconfig.local
+
+[color]
+ui = auto
+
+[core]
+excludesfile = ~/.gitignore
+pager = ${PAGER:-less}
+
+[color "diff"]
+#commit = yellow reverse
+meta = yellow bold
+frag = magenta bold
+old = red bold
+new = green bold
+
+[color "status"]
+added = yellow
+changed = green
+untracked = cyan
+
+[color "branch"]
+current = yellow reverse
+local = yellow
+remote = green
+
+[commit]
+# gpgsign = true
+
+[push]
+default = upstream
+
+[rebase]
+autosquash = true
+
+[tag]
+sort = version:refname
+
+[merge]
+log = true
+tool = kompare
+
+[mergetool]
+prompt = false
+
+[diff]
+guitool = kompare
+
+[difftool]
+prompt=false
+
+[gitflow "branch"]
+master = master
+develop = develop
+
+[gitflow "prefix"]
+feature = feature/
+release = release/
+hotfix = hotfix/
+support = support/
+versiontag =
+
+[cola]
+spellcheck = false

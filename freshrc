@@ -1,0 +1,51 @@
+fresh freshshell/fresh bin/fresh --bin
+
+
+#-----------------------
+# Shell
+#-----------------------
+
+fresh freshshell/fresh contrib/source-build.sh --file=~/.bash_profile
+fresh freshshell/fresh contrib/source-build.sh --file=~/.bashrc
+
+fresh-options --marker
+  fresh bash/config/\*
+  fresh bash/functions/\*
+  fresh bash/aliases/\*
+  fresh bash/prompt.sh
+  fresh bash/apps/\*
+  fresh ../nextcloud/dotfiles/extra.sh  --ignore-missing  # this one is not in git
+
+  fresh junegunn/fzf shell/completion.bash
+  fresh junegunn/fzf shell/key-bindings.bash
+  fresh freshshell/fresh contrib/completion/fresh-completion.bash
+  fresh bobthecow/git-flow-completion git-flow-completion.bash
+fresh-options
+
+
+#-----------------------
+# Other config files
+#-----------------------
+
+fresh config/\* --file
+fresh config/gnupg --file ~/.gnupg/
+fresh config/ssh --file ~/.ssh/
+
+fresh-options --file ~/.gitconfig --marker
+  fresh ../nextcloud/dotfiles/gitconfig-user  --ignore-missing  # this one is not in git
+  fresh config/gitconfig/\*
+fresh-options
+
+
+#-----------------------
+# Misc Binaries
+#-----------------------
+
+fresh bin/\* --bin
+fresh skywind3000/z.lua z.lua --bin
+fresh junegunn/fzf bin/\* --bin
+
+
+
+fresh_after_build() {
+}

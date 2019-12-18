@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-
-
 
 # `s` with no arguments opens the current directory in Sublime Text, otherwise
 # opens the given location
@@ -20,5 +16,15 @@ function a() {
 		atom .;
 	else
 		atom "$@";
+	fi;
+}
+
+# `c` with no arguments opens the current directory in VS Code, otherwise opens the
+# given location
+function c() {
+	if [ $# -eq 0 ]; then
+		code .;
+	else
+		code "$@";
 	fi;
 }

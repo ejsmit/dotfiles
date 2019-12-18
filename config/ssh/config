@@ -1,29 +1,42 @@
 
+Match host * exec "gpg-connect-agent UPDATESTARTUPTTY /bye"
+
+IdentitiesOnly yes
+IdentityFile ~/.ssh/id_rsa
+
+
 Host gollum
   Hostname gollum.local
   User pi
-  IdentityFile  ~/.ssh/id_rsa
 
 Host smaug
   Hostname smaug.local
   User pi
-  IdentityFile ~/.ssh/id_rsa
 
 Host frodo
   Hostname frodo.local
-  User rsmit
-  IdentityFile ~/.ssh/id_rsa
+  User volumio
 
 Host gimli
   Hostname gimli.local
   User pi
-  IdentityFile ~/.ssh/id_rsa
+
+Host glaurung
+  Hostname glaurung.local
+  User pi
+
+Host gandalf
+  Hostname gandalf.local
+  User rsmit
+
+Host radagast
+  Hostname radagast.local
+  User rsmit
 
 
 Host github.com
   HostName github.com
   User git
-  IdentitiesOnly yes
   IdentityFile ~/.ssh/id_rsa_github
   ForwardAgent no
   ForwardX11 no
