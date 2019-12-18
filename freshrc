@@ -8,7 +8,7 @@ fresh freshshell/fresh bin/fresh --bin
 fresh freshshell/fresh contrib/source-build.sh --file=~/.bash_profile
 fresh freshshell/fresh contrib/source-build.sh --file=~/.bashrc
 
-fresh-options --marker
+fresh-options --file --marker
   fresh bash/config/\*
   fresh bash/functions/\*
   fresh bash/aliases/\*
