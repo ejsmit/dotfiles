@@ -27,11 +27,13 @@ fresh bobthecow/git-flow-completion git-flow-completion.bash
 
 fresh config/\* --file
 
-for CONFFILE in ~/.dotfiles/config/gnupg/*; do
-  fresh $CONFFILE --file ~/.gnupg/$(basename $CONFFILE)
+for CONFPATH in ~/.dotfiles/config/gnupg/*; do
+  CONFFILE=$(basename $CONFPATH)
+  fresh config/gnupg/$CONFFILE --file ~/.gnupg/$CONFFILE
 done
-for CONFFILE in ~/.dotfiles/config/ssh/*; do
-  fresh $CONFFILE --file ~/.ssh/$(basename $CONFFILE)
+for CONFPATH in ~/.dotfiles/config/ssh/*; do
+  CONFFILE=$(basename $CONFPATH)
+  fresh config/ssh/$CONFFILE --file ~/.ssh/$CONFFILE
 done
 
 fresh-options --file ~/.gitconfig --marker
@@ -44,7 +46,7 @@ fresh-options
 # Misc Binaries
 #-----------------------
 
-#fresh bin/\* --bin
+fresh bin/\* --bin
 fresh skywind3000/z.lua z.lua --bin
 fresh junegunn/fzf bin/\* --bin
 
