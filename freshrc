@@ -26,8 +26,13 @@ fresh bobthecow/git-flow-completion git-flow-completion.bash
 #-----------------------
 
 fresh config/\* --file
-#fresh config/gnupg/\* --file ~/.gnupg/
-#fresh config/ssh/config --file ~/.ssh/config
+
+for CONFFILE in config/gnupg/*; do
+  echo  $CONFFILE --file ~/.gnupg/$(basename $CONFFILE)
+done
+for CONFFILE in config/ssh/*; do
+  echo  $CONFFILE --file ~/.ssh/$(basename $CONFFILE)
+done
 
 fresh-options --file ~/.gitconfig --marker
   fresh ../nextcloud/dotfiles/gitconfig-user  --ignore-missing  # this one is not in git
