@@ -47,5 +47,6 @@ fresh junegunn/fzf bin/\* --bin
 
 
 
-fresh_after_build() {
-}
+# fresh_after_build() {
+#
+# }
