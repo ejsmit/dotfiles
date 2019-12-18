@@ -28,8 +28,8 @@ fresh-options
 #-----------------------
 
 fresh config/\* --file
-fresh config/gnupg/\* --file ~/.gnupg
-fresh config/ssh/config --file ~/.ssh/config
+#fresh config/gnupg/\* --file ~/.gnupg/
+#fresh config/ssh/config --file ~/.ssh/config
 
 fresh-options --file ~/.gitconfig --marker
   fresh ../nextcloud/dotfiles/gitconfig-user  --ignore-missing  # this one is not in git
@@ -41,7 +41,7 @@ fresh-options
 # Misc Binaries
 #-----------------------
 
-fresh bin/\* --bin
+#fresh bin/\* --bin
 fresh skywind3000/z.lua z.lua --bin
 fresh junegunn/fzf bin/\* --bin
 
