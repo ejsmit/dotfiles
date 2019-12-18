@@ -27,11 +27,11 @@ fresh bobthecow/git-flow-completion git-flow-completion.bash
 
 fresh config/\* --file
 
-for CONFFILE in config/gnupg/*; do
-  echo  $CONFFILE --file ~/.gnupg/$(basename $CONFFILE)
+for CONFFILE in ~/.dotfiles/config/gnupg/*; do
+  fresh $CONFFILE --file ~/.gnupg/$(basename $CONFFILE)
 done
-for CONFFILE in config/ssh/*; do
-  echo  $CONFFILE --file ~/.ssh/$(basename $CONFFILE)
+for CONFFILE in ~/.dotfiles/config/ssh/*; do
+  fresh $CONFFILE --file ~/.ssh/$(basename $CONFFILE)
 done
 
 fresh-options --file ~/.gitconfig --marker
