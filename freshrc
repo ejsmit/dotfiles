@@ -15,8 +15,6 @@ fresh bash/prompt.sh
 fresh bash/apps/\*
 fresh ../nextcloud/dotfiles/extra.sh  --ignore-missing  # this one is not in git
 
-fresh junegunn/fzf shell/completion.bash
-fresh junegunn/fzf shell/key-bindings.bash
 fresh ejsmit/fresh contrib/completion/fresh-completion.bash
 fresh bobthecow/git-flow-completion git-flow-completion.bash
 
@@ -48,7 +46,6 @@ fresh-options
 
 fresh bin/\* --bin
 fresh skywind3000/z.lua z.lua --bin
-fresh junegunn/fzf bin/\* --bin
 
 
 

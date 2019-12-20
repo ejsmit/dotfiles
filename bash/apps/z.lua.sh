@@ -1,2 +1,2 @@
 
-eval "$(lua ~/bin/z.lua --init bash enhanced once fzf)"
+eval "$(lua ~/bin/z.lua --init bash enhanced once)"
