@@ -5,15 +5,19 @@ fresh ejsmit/fresh bin/fresh --bin
 # Shell
 #-----------------------
 
-fresh ejsmit/fresh contrib/source-build.sh --file=~/.bash_profile
-fresh ejsmit/fresh contrib/source-build.sh --file=~/.bashrc
+#fresh ejsmit/fresh contrib/source-build.sh --file=~/.bash_profile
+#fresh ejsmit/fresh contrib/source-build.sh --file=~/.bashrc
 
-fresh bash/config/\*
-fresh bash/functions/\*
-fresh bash/aliases/\*
+fresh-options --file ~/.bashrc --marker
+	fresh bash/config/\*
+	fresh bash/functions/\*
+	fresh bash/aliases/\*
+	fresh bash/apps/\*
+	fresh ../nextcloud/dotfiles/extra.sh  --ignore-missing  # this one is not in git
+	fresh bash/shell.sh
+fresh-options
+
 fresh bash/prompt.sh
-fresh bash/apps/\*
-fresh ../nextcloud/dotfiles/extra.sh  --ignore-missing  # this one is not in git
 
 fresh ejsmit/fresh contrib/completion/fresh-completion.bash
 fresh bobthecow/git-flow-completion git-flow-completion.bash
