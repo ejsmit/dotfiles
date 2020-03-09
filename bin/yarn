@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+tag=${DOCKER_NODE_TAG-'lts-alpine'}
+
+docker run \
+    -it --rm  \
+	-w /work -v $(pwd):/work \
+	-u node \
+	node:$tag \
+	yarn $*
+
+
+
