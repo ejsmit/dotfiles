@@ -68,3 +68,9 @@ versiontag =
 
 [cola]
 spellcheck = false
+
+# merge drivers are commands that do the actual merge and returns true or false.
+# 'ours' merge does not change any files and just run /bin/true for return value. 
+# useful in .gitattribute files to ignore files that should not be changed during merge.
+[merge "ours"]
+driver = true
