@@ -18,6 +18,7 @@ fresh-options --file ~/.bashrc --marker
 fresh-options
 
 fresh bash/prompt.sh
+fresh bash/upgrade.sh
 
 fresh ejsmit/fresh contrib/completion/fresh-completion.bash
 fresh bobthecow/git-flow-completion git-flow-completion.bash
