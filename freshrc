@@ -22,6 +22,7 @@ fresh bash/upgrade.sh
 
 fresh ejsmit/fresh contrib/completion/fresh-completion.bash
 fresh bobthecow/git-flow-completion git-flow-completion.bash
+fresh tartansandal/conda-bash-completion conda
 
 
 #-----------------------
