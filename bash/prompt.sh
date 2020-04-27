@@ -90,7 +90,7 @@ prompt_private() {
 
 	# Check if the current directory is in a Git repository.
 	if mountpoint -q ~/.private; then
-		echo -e "[PRIV] "
+		echo -e "[private] "
 	fi;
 
 }
