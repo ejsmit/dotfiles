@@ -86,6 +86,14 @@ prompt_python() {
 
 }
 
+prompt_private() {
+
+	# Check if the current directory is in a Git repository.
+	if mountpoint -q ~/.private; then
+		echo -e "[PRIV] "
+	fi;
+
+}
 
 
 prompt_exitstatus() {
@@ -125,6 +133,7 @@ PS1+="\[${userStyle}\]\u"; # username
 PS1+="\[${white}\] at ";
 PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${white}\] in ";
+PS1+="\[${bold}${red}\]\$(prompt_private)"
 PS1+="\[${violet}\]\$(prompt_python)"
 PS1+="\[${green}\]\w"; # working directory full path
 PS1+="\$(prompt_git \"\[${white}\] on \[${violet}\]\" \"\[${blue}\]\")"; # Git repository details
