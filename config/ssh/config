@@ -19,7 +19,7 @@ Host frodo
 
 Host gimli
   Hostname gimli.local
-  User pi
+  User root
 
 Host glaurung
   Hostname glaurung.local
