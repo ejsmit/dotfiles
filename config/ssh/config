@@ -21,8 +21,8 @@ Host gimli
   Hostname gimli.local
   User root
 
-Host glaurung
-  Hostname glaurung.local
+Host thorin
+  Hostname thorin.local
   User pi
 
 Host gandalf

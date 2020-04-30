@@ -4,6 +4,10 @@ _direnv_hook() {
   eval "$(direnv export bash)";
   return $previous_exit_status;
 };
-if ! [[ "$PROMPT_COMMAND" =~ _direnv_hook ]]; then
-  PROMPT_COMMAND="_direnv_hook;$PROMPT_COMMAND";
+if [[ -x /usr/bin/direnv ]]; then
+	if ! [[ "$PROMPT_COMMAND" =~ _direnv_hook ]]; then
+	  PROMPT_COMMAND="_direnv_hook;$PROMPT_COMMAND";
+	fi
 fi
+
+
