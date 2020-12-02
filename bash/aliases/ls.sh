@@ -9,6 +9,6 @@ else # macOS `ls`
 fi
 
 alias ls="command ls ${colorflag} --file-type"
-alias ll="ls -l "
-alias la="ls -la "
+alias ll="ls -Al "
+alias la="ls -A "
 alias lsd="ls -l | grep --color=never '^d'"
