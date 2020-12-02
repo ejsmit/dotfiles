@@ -6,31 +6,31 @@ IdentityFile ~/.ssh/id_rsa
 
 
 Host gollum
-  Hostname gollum.local
+  Hostname gollum.home
   User pi
 
 Host smaug
-  Hostname smaug.local
+  Hostname smaug.home
   User pi
 
-Host frodo
-  Hostname frodo.local
-  User volumio
+Host moode
+  Hostname moode.home
+  User pi
 
 Host gimli
-  Hostname gimli.local
+  Hostname gimli.home
   User root
 
 Host thorin
-  Hostname thorin.local
+  Hostname thorin.home
   User pi
 
 Host gandalf
-  Hostname gandalf.local
+  Hostname gandalf.home
   User rsmit
 
 Host radagast
-  Hostname radagast.local
+  Hostname radagast.home
   User rsmit
 
 
