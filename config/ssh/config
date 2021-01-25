@@ -1,5 +1,4 @@
 
-Match host * exec "gpg-connect-agent UPDATESTARTUPTTY /bye"
 
 IdentitiesOnly yes
 IdentityFile ~/.ssh/id_rsa
