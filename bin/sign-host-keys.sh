@@ -1,14 +1,28 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/ssh-ca-temp
-cp /etc/ssh/ssh_host_*_key.pub ~/ssh-ca-temp
+# exit when any command fails
+set -e
+
+temp_dir=$(mktemp -d)
+cp /etc/ssh/ssh_host_*_key.pub $temp_dir
+
+serial=$(cat ~/.private/apps/ssh-ca/ca-key.serial.txt)
+# echo "First serial to use: $serial"
+count=$(ls $temp_dir/ssh_host_*_key.pub | wc -l)
+# echo "Number of key files: $count"
+
 ssh-keygen -s ~/.private/apps/ssh-ca/ca-key \
      -I "host:$(hostname)" \
      -n "$(hostname),$(hostname).local,$(hostname).home" \
      -V -5m:+3650d \
      -h \
-     ~/ssh-ca-temp/ssh_host_rsa_key.pub \
-     ~/ssh-ca-temp/ssh_host_ecdsa_key.pub \
-     ~/ssh-ca-temp/ssh_host_ed25519_key.pub
-sudo cp ~/ssh-ca-temp/ssh_host*-cert.pub /etc/ssh
-rmdir ~/ssh-ca-temp
+     -z +$serial \
+     $temp_dir/ssh_host_*_key.pub
+
+count_certs=$(ls $temp_dir/ssh_host_*-cert.pub | wc -l)
+((serial=serial+$count_certs))
+#echo "New serial to write $serial"
+echo $serial >~/.private/apps/ssh-ca/ca-key.serial.txt
+
+sudo cp $temp_dir/ssh_host*-cert.pub /etc/ssh
+rm -Rf $temp_dir
