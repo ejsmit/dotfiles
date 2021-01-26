@@ -25,7 +25,7 @@ function generate_single {
 		     -n "$(hostname),$(hostname).local,$(hostname).home" \
 		     -V -5m:+365d \
 		     -h \
-		     -z +$serial \
+		     -z $serial \
 		     $keyfile
 		((serial=serial+1))	
     done	
