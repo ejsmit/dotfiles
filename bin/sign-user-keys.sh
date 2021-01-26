@@ -3,9 +3,6 @@
 # exit when any command fails
 set -e
 
-if [ -z SSH_USER_PRINCIPAL ]; do
-	echo "using $(whoami) as principal"
-
 echo "Creating new user key:"
 ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
 
