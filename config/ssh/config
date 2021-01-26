@@ -1,8 +1,7 @@
 
 
 IdentitiesOnly yes
-
-
+IdentityFile ~/.ssh/id_ed25519
 
 Host gollum
   Hostname gollum.home
@@ -16,12 +15,10 @@ Host smaug
 
 Host moode
   Hostname moode.home
-  CertificateFile ~/.ssh/id_ed25519
   User pi
 
 Host gimli
   Hostname gimli.home
-  CertificateFile ~/.ssh/id_ed25519
   User root
 
 Host thorin
