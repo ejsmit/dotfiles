@@ -1,36 +1,49 @@
 
 
 IdentitiesOnly yes
-IdentityFile ~/.ssh/id_rsa
+
 
 
 Host gollum
   Hostname gollum.home
+  CertificateFile ~/.ssh/id_ed25519-cert
   User pi
 
 Host smaug
   Hostname smaug.home
+  CertificateFile ~/.ssh/id_ed25519-cert
   User pi
 
 Host moode
   Hostname moode.home
+  CertificateFile ~/.ssh/id_ed25519
   User pi
 
 Host gimli
   Hostname gimli.home
+  CertificateFile ~/.ssh/id_ed25519
   User root
 
 Host thorin
   Hostname thorin.home
+  CertificateFile ~/.ssh/id_ed25519-cert
   User pi
 
 Host gandalf
   Hostname gandalf.home
+  CertificateFile ~/.ssh/id_ed25519-cert
   User rsmit
 
 Host radagast
   Hostname radagast.home
+  CertificateFile ~/.ssh/id_ed25519-cert
   User rsmit
+
+Host sauron
+  Hostname sauron.home
+  CertificateFile ~/.ssh/id_ed25519-cert
+  User rsmit
+
 
 
 Host github.com
