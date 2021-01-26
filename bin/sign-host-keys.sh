@@ -14,7 +14,7 @@ count=$(ls $temp_dir/ssh_host_*_key.pub | wc -l)
 ssh-keygen -s ~/.private/apps/ssh-ca/ca-key \
      -I "host:$(hostname)" \
      -n "$(hostname),$(hostname).local,$(hostname).home" \
-     -V -5m:+3650d \
+     -V -5m:+365d \
      -h \
      -z +$serial \
      $temp_dir/ssh_host_*_key.pub
