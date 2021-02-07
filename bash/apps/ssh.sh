@@ -1,9 +1,8 @@
 # Check of default cert for this user already exists (~/.ssh/id_rsa)
 #  Create it using defaults if it is missing.   Don't overwrite if it exists.
-if [ ! -e ~/.ssh/id_rsa ]; then
-	cat /dev/zero | ssh-keygen -q -N ""  >/dev/null
+if [ ! -e ~/.ssh/id_ed25519 ]; then
+	cat /dev/zero | ssh-keygen -t ed25519 -q -N ""  >/dev/null
 fi
-
 
 
 # Assume ssh-agent is already running.   use other system means to start it.
@@ -13,7 +12,7 @@ case $OSTYPE in
     ssh-add -A  2> /dev/null
 	;;
   *)
-    for file in `grep -lR "PRIVATE" ~/.ssh/id_rsa*`; do ssh-add -q "$file" </dev/null 2>/dev/null ; done
+    for file in `grep -lR "PRIVATE KEY" ~/.ssh/id_ed25519*`; do ssh-add -q "$file" </dev/null 2>/dev/null ; done
 	;;
 esac
 

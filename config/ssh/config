@@ -46,7 +46,7 @@ Host sauron
 Host github.com
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_rsa_github
+  IdentityFile ~/.ssh/id_ed25519_github
   ForwardAgent no
   ForwardX11 no
   PermitLocalCommand no
