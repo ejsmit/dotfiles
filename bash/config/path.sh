@@ -14,7 +14,6 @@ path_add_start() {
 
 
 # make sure a few required directories exist
-mkdir -p ~/nextcloud
 mkdir -p ~/projects
 mkdir -p ~/.private
 mkdir -p ~/bin

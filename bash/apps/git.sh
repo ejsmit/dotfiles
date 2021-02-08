@@ -68,8 +68,3 @@ function git_current_branch()
 {
   git symbolic-ref --short -q HEAD
 }
-
-# git add untracked
-gau() {
-  git ls-files --other --exclude-standard -z "$@" | xargs -0 git add -Nv
-}
