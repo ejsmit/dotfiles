@@ -1,0 +1,23 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+[directory]
+truncation_length = 5
+truncation_symbol = "…/"
+
+[username]
+show_always = true
+format = "[$user]($style) "
+
+[hostname]
+ssh_only = false
+format =  "at [$hostname]($style) in "
+
+[status]
+disabled = false
+
+[custom.private]
+command = "echo '[PRIVATE]'"  # shows output of command
+when = "mountpoint -q ~/.private"
+style = "bold red"
+format = " [$output]($style) "

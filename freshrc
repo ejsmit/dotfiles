@@ -39,6 +39,10 @@ for CONFPATH in ~/.dotfiles/config/ssh/*; do
   CONFFILE=$(basename $CONFPATH)
   fresh config/ssh/$CONFFILE --file ~/.ssh/$CONFFILE
 done
+for CONFPATH in ~/.dotfiles/config/starship/*; do
+  CONFFILE=$(basename $CONFPATH)
+  fresh config/starship/$CONFFILE --file ~/.config/$CONFFILE
+done
 
 fresh-options --file ~/.gitconfig --marker
   fresh ../nextcloud/dotfiles/gitconfig-user  --ignore-missing  # this one is not in git
