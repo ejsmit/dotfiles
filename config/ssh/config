@@ -6,7 +6,7 @@ IdentityFile ~/.ssh/id_ed25519
 Host gollum
   Hostname gollum.home
   CertificateFile ~/.ssh/id_ed25519-cert
-  User pi
+  User rsmit
 
 Host smaug
   Hostname smaug.home
