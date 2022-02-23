@@ -42,6 +42,11 @@ Host sauron
   User rsmit
 
 
+Host arwen arwen.smit.org.uk
+  Hostname arwen.smit.org.uk
+  IdentityFile ~/.ssh/id_ed25519_linode
+  User rsmit
+  Port 7109
 
 Host github.com
   HostName github.com
