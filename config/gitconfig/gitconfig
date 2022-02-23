@@ -3,6 +3,9 @@
 #   git config -f ~/.gitconfig.local user.email me@example.com
 
 
+[init]
+defaultBranch = main
+
 [include]
 path = .gitconfig.local
 
