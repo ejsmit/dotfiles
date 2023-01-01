@@ -12,9 +12,9 @@ Host smaug
   CertificateFile ~/.ssh/id_ed25519-cert
   User pi
 
-Host moode
-  Hostname moode.home
-  User pi
+Host volumio
+  Hostname volumio.home
+  User volumio
 
 Host gimli
   Hostname gimli.home
@@ -32,11 +32,11 @@ Host gandalf
 
 Host radagast
   Hostname radagast.home
-  CertificateFile ~/.ssh/id_ed25519-cert
+  # CertificateFile ~/.ssh/id_ed25519-cert
   User rsmit
 
-Host sauron
-  Hostname sauron.home
+Host sauron sauron.smit.org.uk
+  Hostname sauron.smit.org.uk
   CertificateFile ~/.ssh/id_ed25519-cert
   User rsmit
 

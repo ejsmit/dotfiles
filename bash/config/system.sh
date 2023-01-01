@@ -18,3 +18,8 @@ export MANPAGER='less -X';
 
 # password prompts for SSH
 [[ $XDG_CURRENT_DESKTOP == "KDE" ]] && export SSH_ASKPASS=ksshaskpass
+
+
+# python disable prompt changes
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
